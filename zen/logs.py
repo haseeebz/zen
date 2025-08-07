@@ -21,11 +21,16 @@ def get_logfile() -> Path:
     return logfile   
 
 
-def log(args):
+def log(msg: str):
     
     logfile = get_logfile()
 
     with open(logfile, "a") as file:
-        file.write(args.message + "\n")
+        file.write(msg + "\n")
 
-     
+
+def handle(args):
+
+    if args.message:
+        log(msg)
+
