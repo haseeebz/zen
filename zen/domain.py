@@ -1,4 +1,5 @@
-import helpers, config, os, shutil
+from zen import helpers, config
+import os, shutil
 
 
 def create_domain(name: str):
@@ -43,7 +44,7 @@ def get_domains() -> list[str]:
 def list_domains():
     print("Existing Domains: ")
     for item in get_domains():
-        print(f"   {item.name}")
+        print(f"   {item}")
 
 
 def handle(args):

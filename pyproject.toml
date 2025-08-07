@@ -1,0 +1,9 @@
+[project]
+name = "zen"
+version = "0.1.0"
+description = "A digital logger-like diary."
+authors = [{ name = "Haseeb" }]
+dependencies = []
+
+[project.scripts]
+zen = "zen.main:main"

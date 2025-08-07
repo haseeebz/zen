@@ -1,9 +1,9 @@
-import arguments, logs, settings, domain
+from zen import arguments, logs, domain
+
 
 def main():
     args = arguments.get()
     
-
     match args.command:
         case "log":
             logs.handle(args)

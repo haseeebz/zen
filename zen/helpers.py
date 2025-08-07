@@ -1,7 +1,7 @@
 from pathlib import Path
 import os, shutil
 from datetime import datetime
-import config
+from zen import config
 
 
 def ask_user(msg: str, options: list[str]) -> str:

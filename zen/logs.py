@@ -1,11 +1,12 @@
 from datetime import datetime
+import os
 from pathlib import Path
-import helpers, os, config, domain
+from zen import helpers, config, domain
 
 def get_logfile(dom: str) -> Path:
     
     if not helpers.check_log_dir():
-        print("logs/ does not exist. No where to write logs to.")
+        print(f"{config.LOG_DIR} does not exist. No where to write logs to.")
         exit(1)
 
     date = datetime.now()
