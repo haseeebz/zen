@@ -1,8 +1,8 @@
 from datetime import datetime
 from pathlib import Path
-import helpers, os, config
+import helpers, os, config, domain
 
-def get_logfile() -> Path:
+def get_logfile(dom: str) -> Path:
     
     if not helpers.check_log_dir():
         print("logs/ does not exist. No where to write logs to.")
@@ -11,7 +11,11 @@ def get_logfile() -> Path:
     date = datetime.now()
     logfile = helpers.get_logfile_from_date(date)
 
-    logfile = config.LOG_DIR / logfile
+    if dom not in domain.get_domains():
+        print(f"Domain '{dom}' does not exist!")
+        exit(1)
+
+    logfile = config.LOG_DIR / dom / logfile
 
     if not logfile.exists():
         directories = os.path.dirname(logfile)
@@ -21,9 +25,13 @@ def get_logfile() -> Path:
     return logfile   
 
 
-def log(msg: str):
-    
-    logfile = get_logfile()
+def log(msg: str, domain: str | None):
+
+    if not domain:
+        print("Domain not specified!")
+        exit(1)
+             
+    logfile = get_logfile(domain)
 
     with open(logfile, "a") as file:
         file.write(msg + "\n")
@@ -32,5 +40,5 @@ def log(msg: str):
 def handle(args):
 
     if args.message:
-        log(msg)
+        log(args.message, args.domain)
 

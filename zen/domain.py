@@ -36,9 +36,13 @@ def delete_domain(name: str):
             print("Abort.")
 
 
+def get_domains() -> list[str]:
+    return [x.name for x in config.LOG_DIR.iterdir()]
+
+
 def list_domains():
     print("Existing Domains: ")
-    for item in config.LOG_DIR.iterdir():
+    for item in get_domains():
         print(f"   {item.name}")
 
 
