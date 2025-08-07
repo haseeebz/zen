@@ -1,4 +1,4 @@
-import arguments, logs, settings
+import arguments, logs, settings, domains
 
 def main():
     args = arguments.get()
@@ -7,6 +7,8 @@ def main():
     match args.command:
         case "log":
             logs.log(args)
+        case "domain":
+            domains.handle(args)
             
         
 
