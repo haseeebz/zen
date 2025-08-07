@@ -1,4 +1,4 @@
-from zen import arguments, logs, domain
+from zen import arguments, logs, domain, read
 
 
 def main():
@@ -9,6 +9,9 @@ def main():
             logs.handle(args)
         case "domain":
             domain.handle(args)
+        case "read":
+            read.handle(args)
+
             
         
 

@@ -14,6 +14,10 @@ def setup():
     log_parser.add_argument("message", help = "Content you want to log.")
     log_parser.add_argument("--domain", help = "Domain you want to log in.")
 
+    read_parser = subparser.add_parser("read", help = "Log an entry.")
+    read_parser.add_argument("date", help = "The date of the log file in YY/MM/DD format.")
+    read_parser.add_argument("--domain", help = "Domain you want to log in.")
+
     domain_parser = subparser.add_parser("domain", help = "Domain operations.")
     domain_parser.add_argument("--create", help = "Create a new domain.", type=str)
     domain_parser.add_argument("--delete", help = "Delete a domain.", type=str)
