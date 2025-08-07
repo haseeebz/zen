@@ -23,4 +23,3 @@ def get():
     args = parser.parse_args()
     return args
 
-print(get().command)

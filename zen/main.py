@@ -1,11 +1,12 @@
-import arguments, log
+import arguments, logs
 
 def main():
     args = arguments.get()
 
     match args.command:
         case "log":
-            pass
+            logs.log(args)
+            
         
 
 

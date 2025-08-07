@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from datetime import datetime
 import config
 
 def ask_user(msg: str, options: list[str]) -> str:
@@ -19,7 +20,7 @@ def check_log_dir() -> bool:
     log_dir = config.LOG_DIR
 
     if not log_dir.exists():
-        choice = helpers.ask_user(
+        choice = ask_user(
             f"{log_dir} does not exist. Do you want to create it?",
             ['y', 'n']
         )
@@ -32,7 +33,7 @@ def check_log_dir() -> bool:
 
 
     if not log_dir.is_dir():
-        choice = helpers.ask_user(
+        choice = ask_user(
             f"{log_dir} is a file. Do you want to remove it and create a directory?",
             ['y', 'n']
         )
@@ -43,8 +44,14 @@ def check_log_dir() -> bool:
             return True
         else:
             return False
+
+    return True
         
 
-    
+def get_logfile_from_date(date: datetime) -> Path:
+    logfile = Path(str(date.year)) / str(date.month) / f"{date.day}.log"
+    return logfile
+
+
 
 
