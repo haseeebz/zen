@@ -23,6 +23,12 @@ def setup():
     domain_parser.add_argument("--delete", help = "Delete a domain.", type=str)
     domain_parser.add_argument("--list", help = "List all domains.", action="store_true")
 
+    settings_parser = subparser.add_parser("setting", help = "Settings options.")
+    settings_parser.add_argument("--list", help = "List all settings keys.", action="store_true")
+    settings_parser.add_argument("--set", nargs=2, metavar=("key", "value"), help = "Create a new domain.")
+
+
+
 
     return parser
 

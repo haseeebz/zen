@@ -1,8 +1,9 @@
-from zen import arguments, logs, domain, read
+from zen import arguments, logs, domain, read, settings
 
 
 def main():
     args = arguments.get()
+    settings.check_settings_file()
     
     match args.command:
         case "log":
@@ -11,6 +12,9 @@ def main():
             domain.handle(args)
         case "read":
             read.handle(args)
+        case "setting":
+            settings.handle(args)
+
 
             
         
