@@ -1,0 +1,3 @@
+
+def ask(msg):
+    pass
