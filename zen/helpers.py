@@ -1,7 +1,8 @@
 from pathlib import Path
-import os
+import os, shutil
 from datetime import datetime
 import config
+
 
 def ask_user(msg: str, options: list[str]) -> str:
 
@@ -13,7 +14,7 @@ def ask_user(msg: str, options: list[str]) -> str:
         
         print("Incorrect option!")
 
-
+    
 
 def check_log_dir() -> bool:
 
@@ -51,6 +52,7 @@ def check_log_dir() -> bool:
 def get_logfile_from_date(date: datetime) -> Path:
     logfile = Path(str(date.year)) / str(date.month) / f"{date.day}.log"
     return logfile
+
 
 
 

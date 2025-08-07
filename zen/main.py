@@ -1,7 +1,8 @@
-import arguments, logs
+import arguments, logs, settings
 
 def main():
     args = arguments.get()
+    
 
     match args.command:
         case "log":

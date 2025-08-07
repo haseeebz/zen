@@ -26,6 +26,6 @@ def log(args):
     logfile = get_logfile()
 
     with open(logfile, "a") as file:
-        file.write(args.message)
+        file.write(args.message + "\n")
 
      
