@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import config
 
 def ask_user(msg: str, options: list[str]) -> str:
 
@@ -15,10 +16,7 @@ def ask_user(msg: str, options: list[str]) -> str:
 
 def check_log_dir() -> bool:
 
-    parent = Path(__file__).resolve().parents[1]
-
-    log_dir = parent / "logs"
-
+    log_dir = config.LOG_DIR
 
     if not log_dir.exists():
         choice = helpers.ask_user(
