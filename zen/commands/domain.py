@@ -1,10 +1,11 @@
-from zen.utils import settings, helpers
+from zen.utils import helpers
+from zen.utils.settings import Settings
 import os, shutil
 
 
 def create_domain(name: str):
 
-    domain_dir = settings.LOG_DIR / name
+    domain_dir = Settings.log_dir / name
 
     if not domain_dir.exists():
         os.mkdir(domain_dir)
@@ -15,7 +16,7 @@ def create_domain(name: str):
 
 def delete_domain(name: str):
     
-    domain_dir = settings.LOG_DIR / name
+    domain_dir = Settings.log_dir / name
 
     if not domain_dir.exists():
         print(f"Domain '{name}' does not exist, So won't be deleted.")
@@ -30,7 +31,7 @@ def delete_domain(name: str):
 
 
 def get_domains() -> list[str]:
-    return [x.name for x in settings.LOG_DIR.iterdir()]
+    return [x.name for x in Settings.log_dir.iterdir()]
 
 
 def list_domains():

@@ -53,20 +53,23 @@ ALL_SETTINGS = [
     ("default_domain", "The domain that will be accessed by default.")
 ]
 
-class Settings():
-    def __init__(self):
-        self.default_domain: str | None = None
-        self.source: str | None = None
+SETTINGS = {}
 
-SETTINGS = Settings()
+class Settings():
+    default_domain: str | None = None
+    source: str | None = None
+    zen_dir = ZEN_DIR
+    log_dir = LOG_DIR
+    file = SETTINGS_FILE
+
 
 def load_settings():
-
 
     if not SETTINGS_FILE.exists():
         print(f"{SETTINGS_FILE} does not exist! Creating one.")
         create_settings_file()
 
+    
     with open(SETTINGS_FILE) as file:
         try:
             settings: dict = json.load(file)
@@ -76,8 +79,9 @@ def load_settings():
             exit(1)
 
     global SETTINGS
-    SETTINGS.default_domain = settings.setdefault("default_domain", None)
-    SETTINGS.source = settings.setdefault("source", None)
+    SETTING = settings
+    Settings.default_domain = settings.setdefault("default_domain", None)
+    Settings.source = settings.setdefault("source", None)
 
 
 

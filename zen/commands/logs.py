@@ -1,6 +1,7 @@
 from zen.utils import helpers
-from zen.utils.settings import SETTINGS
+from zen.utils.settings import Settings
 from . import domain
+
 from datetime import datetime
 import os
 from pathlib import Path
@@ -14,7 +15,7 @@ def get_logfile(dom: str) -> Path:
         print(f"Domain '{dom}' does not exist!")
         exit(1)
 
-    logfile = config.LOG_DIR / dom / logfile
+    logfile = Settings.log_dir / dom / logfile
 
     if not logfile.exists():
         directories = os.path.dirname(logfile)
@@ -27,11 +28,11 @@ def get_logfile(dom: str) -> Path:
 def log(msg: str, dom: str | None):
 
     if not dom:
-        if not SETTINGS.default_domain:
+        if not Settings.default_domain:
             print(f"No domain specified. No default domain found either.")
             exit(1)
 
-        dom = SETTINGS.default_domain
+        dom = Settings.default_domain
              
     logfile = get_logfile(dom)
 

@@ -1,6 +1,6 @@
 import json
 from typing import Any
-from zen.utils import settings
+from zen.utils.settings import SETTINGS, ALL_SETTINGS, Settings
 
 
 
@@ -10,7 +10,7 @@ def list_all_settings():
 
 
 def set_settings(key, value):
-    settings.SETTINGS[key] = value
+    SETTINGS[key] = value
 
     with open(settings.SETTINGS_FILE, 'w') as file:
         json.dump(SETTINGS, file)
