@@ -1,11 +1,11 @@
 from .utils import arguments
 from .commands import domain, logs, read, settings
-from .utils.settings import load_settings
+from .utils import settings as settings_cfg
 
 def main():
 
     args = arguments.get()
-    load_settings()
+    settings_cfg.load_settings()
     
     match args.command:
         case "log":

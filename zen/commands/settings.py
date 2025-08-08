@@ -1,19 +1,20 @@
 import json
 from typing import Any
-from zen.utils.settings import SETTINGS, ALL_SETTINGS, Settings
+from zen.utils import settings
+from zen.utils.settings import Settings
 
 
 
 def list_all_settings():
-    for name, info in ALL_SETTINGS:
-        print(f"{name:<20} : {info}")
+    for name, info in settings.ALL_SETTINGS:
+        print(f"{name:<16} : {Settings.__dict__[name]} - {info}")
 
 
 def set_settings(key, value):
-    SETTINGS[key] = value
+    settings.SETTINGS[key] = value
 
     with open(settings.SETTINGS_FILE, 'w') as file:
-        json.dump(SETTINGS, file)
+        json.dump(settings.SETTINGS, file)
 
 
 def handle(args):

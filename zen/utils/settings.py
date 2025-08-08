@@ -53,7 +53,6 @@ ALL_SETTINGS = [
     ("default_domain", "The domain that will be accessed by default.")
 ]
 
-SETTINGS = {}
 
 class Settings():
     default_domain: str | None = None
@@ -78,8 +77,6 @@ def load_settings():
             create_settings_file()
             exit(1)
 
-    global SETTINGS
-    SETTING = settings
     Settings.default_domain = settings.setdefault("default_domain", None)
     Settings.source = settings.setdefault("source", None)
 
