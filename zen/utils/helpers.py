@@ -1,7 +1,7 @@
 from pathlib import Path
 import os, shutil
 from datetime import datetime
-from zen import config
+
 
 
 def ask_user(msg: str, options: list[str]) -> str:
@@ -20,6 +20,8 @@ def get_logfile_from_date(date: datetime) -> Path:
     return logfile
 
 
+def format_date(date: datetime) -> str:
+    return f"{date.year}/{date.month}/{date.day}"
 
 
 

@@ -1,5 +1,7 @@
 from datetime import datetime
-from zen import config, helpers, domain, settings
+from zen.utils import helpers
+from zen.utils.settings import SETTINGS
+from . import domain
 
 def get_logfile(date: str, dom: str):
     
@@ -16,7 +18,7 @@ def get_logfile(date: str, dom: str):
         print(f"Domain '{dom}' does not exist!")
         exit(1)
 
-    logfile = config.LOG_DIR / dom / logfile
+    logfile = SETTINGS.LOG_DIR / dom / logfile
 
     if not logfile.exists():
         print(f"Log file for date '{date}' in domain '{dom}' does not exist!")

@@ -11,14 +11,7 @@ LOG_DIR = ZEN_DIR / "logs"
 SETTINGS_FILE = ZEN_DIR / "settings.json"
 
 
-def initialize():
-
-    print("Initializing zen...")
-
-    os.mkdir(ZEN_DIR)
-    os.mkdir(LOG_DIR)
-    os.mkdir(LOG_DIR / "default")
-    
+def create_settings_file():
 
     if SETTINGS_FILE.exists(): os.remove(SETTINGS_FILE)
 
@@ -29,8 +22,21 @@ def initialize():
     with open(SETTINGS_FILE, "x") as file:
         json.dump(settings, file)
 
-    print(f"Created {ZEN_DIR}")
     print(f"Created settings file: {SETTINGS_FILE}")
+
+
+def initialize():
+
+    print("Initializing zen...")
+
+    os.mkdir(ZEN_DIR)
+    os.mkdir(LOG_DIR)
+    os.mkdir(LOG_DIR / "default")
+
+
+    print(f"Created {ZEN_DIR}")
+    create_settings_file()
+    
 
 
 if not ZEN_DIR.exists():
@@ -40,6 +46,13 @@ if not ZEN_DIR.exists():
 
 # Settings
 
+
+
+ALL_SETTINGS = [
+    ("source", "URL or SSH to the github repo."),
+    ("default_domain", "The domain that will be accessed by default.")
+]
+
 class Settings():
     def __init__(self):
         self.default_domain: str | None = None
@@ -47,22 +60,24 @@ class Settings():
 
 SETTINGS = Settings()
 
-
 def load_settings():
 
-    if not SETTINGS_FILE.exists():
-        print(f"{config.SETTINGS_FILE} does not exist!")
-        config.configure_settings()
 
-    with open(config.SETTINGS_FILE) as file:
+    if not SETTINGS_FILE.exists():
+        print(f"{SETTINGS_FILE} does not exist! Creating one.")
+        create_settings_file()
+
+    with open(SETTINGS_FILE) as file:
         try:
             settings: dict = json.load(file)
         except json.JSONDecodeError:
             print("Invalid config file. Rewriting file, try again.")
-            config.configure_settings()
+            create_settings_file()
             exit(1)
 
     global SETTINGS
     SETTINGS.default_domain = settings.setdefault("default_domain", None)
     SETTINGS.source = settings.setdefault("source", None)
+
+
 

@@ -1,15 +1,11 @@
-from zen import (
-    arguments, 
-    logs, 
-    domain, 
-    read, 
-    settings
-)
+from .utils import arguments
+from .commands import domain, logs, read, settings
+from .utils.settings import load_settings
 
 def main():
 
     args = arguments.get()
-    settings.load_settings()
+    load_settings()
     
     match args.command:
         case "log":

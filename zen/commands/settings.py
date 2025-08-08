@@ -1,15 +1,6 @@
 import json
 from typing import Any
-from zen import helpers, config
-
-SETTINGS = {}
-DEFAULT_DOMAIN = ""
-SOURCE = ""
-
-ALL_SETTINGS = [
-    ("source", "URL or SSH to the github repo."),
-    ("default_domain", "The domain that will be accessed by default.")
-]
+from zen.utils import settings
 
 
 
@@ -19,9 +10,9 @@ def list_all_settings():
 
 
 def set_settings(key, value):
-    SETTINGS[key] = value
+    settings.SETTINGS[key] = value
 
-    with open(config.SETTINGS_FILE, 'w') as file:
+    with open(settings.SETTINGS_FILE, 'w') as file:
         json.dump(SETTINGS, file)
 
 
