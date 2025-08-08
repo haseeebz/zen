@@ -13,7 +13,7 @@ def setup():
     log_parser.add_argument("message", help = "Content you want to log.")
     log_parser.add_argument("--domain", help = "Domain you want to log in.")
 
-    read_parser = subparser.add_parser("read", help = "Log an entry.")
+    read_parser = subparser.add_parser("read", help = "Read an entry.")
     read_parser.add_argument("date", help = "The date of the log file in YY/MM/DD format.")
     read_parser.add_argument("--domain", help = "Domain you want to log in.")
 
@@ -22,7 +22,7 @@ def setup():
     domain_parser.add_argument("--delete", help = "Delete a domain.", type=str)
     domain_parser.add_argument("--list", help = "List all domains.", action="store_true")
 
-    settings_parser = subparser.add_parser("setting", help = "Settings options.")
+    settings_parser = subparser.add_parser("settings", help = "Settings options.")
     settings_parser.add_argument("--list", help = "List all settings keys.", action="store_true")
     settings_parser.add_argument("--set", nargs=2, metavar=("key", "value"), help = "Create a new domain.")
 
