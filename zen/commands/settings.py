@@ -3,25 +3,14 @@ from typing import Any
 from zen import helpers, config
 
 SETTINGS = {}
+DEFAULT_DOMAIN = ""
+SOURCE = ""
 
 ALL_SETTINGS = [
     ("source", "URL or SSH to the github repo."),
     ("default_domain", "The domain that will be accessed by default.")
 ]
 
-def check_settings_file():
-
-    if config.SETTINGS_FILE.exists():
-        return 
-
-    with open(config.SETTINGS_FILE, 'w') as file:
-        json.dump(settings, file)
-
-    SETTINGS = settings
-
-
-def get_setting(key: str) -> Any | None:
-    return SETTINGS.setdefault(key, None)
 
 
 def list_all_settings():

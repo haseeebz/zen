@@ -1,5 +1,5 @@
 from datetime import datetime
-from zen import config, helpers, domain
+from zen import config, helpers, domain, settings
 
 def get_logfile(date: str, dom: str):
     
@@ -29,8 +29,11 @@ def get_logfile(date: str, dom: str):
 def read(date: str, dom: str | None):
 
     if not dom:
-        print(f"No domain specified!")
-        exit(1)
+        if not settings.DEFAULT_DOMAIN:
+            print(f"No domain specified. No default domain found either.")
+            exit(1)
+
+        dom = settings.DEFAULT_DOMAIN
     
     logfile = get_logfile(date, dom)
 

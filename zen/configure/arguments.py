@@ -9,7 +9,6 @@ def setup():
         required = True
     )
 
-
     log_parser = subparser.add_parser("log", help = "Log an entry.")
     log_parser.add_argument("message", help = "Content you want to log.")
     log_parser.add_argument("--domain", help = "Domain you want to log in.")
@@ -27,11 +26,7 @@ def setup():
     settings_parser.add_argument("--list", help = "List all settings keys.", action="store_true")
     settings_parser.add_argument("--set", nargs=2, metavar=("key", "value"), help = "Create a new domain.")
 
-
-
-
     return parser
-
 
 
 def get():

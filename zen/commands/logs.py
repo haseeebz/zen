@@ -1,7 +1,7 @@
 from datetime import datetime
 import os
 from pathlib import Path
-from zen import helpers, config, domain
+from zen import helpers, config, domain, settings
 
 def get_logfile(dom: str) -> Path:
     
@@ -26,13 +26,16 @@ def get_logfile(dom: str) -> Path:
     return logfile   
 
 
-def log(msg: str, domain: str | None):
+def log(msg: str, dom: str | None):
 
-    if not domain:
-        print("Domain not specified!")
-        exit(1)
+    if not dom:
+        if not settings.DEFAULT_DOMAIN:
+            print(f"No domain specified. No default domain found either.")
+            exit(1)
+
+        dom = settings.DEFAULT_DOMAIN
              
-    logfile = get_logfile(domain)
+    logfile = get_logfile(dom)
 
     with open(logfile, "a") as file:
         file.write(msg + "\n")
