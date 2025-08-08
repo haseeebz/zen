@@ -44,8 +44,8 @@ def read(date: str, dom: str | None):
     with open(logfile) as file:
         content = file.read()
 
-    print("\n")
-    print(content)
+    print("")
+    print(content, end="")
 
 
 def handle(args):

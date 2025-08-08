@@ -37,7 +37,7 @@ def log(msg: str, dom: str | None):
     logfile = get_logfile(dom)
 
     with open(logfile, "a") as file:
-        file.write(msg + "\n")
+        file.write(msg + "\n\n")
 
     print(f"Logged to {helpers.format_date(datetime.now())} in domain '{dom}'.")
 
