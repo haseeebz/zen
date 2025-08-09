@@ -35,9 +35,9 @@ def log(msg: str, dom: str | None):
         dom = Settings.default_domain
              
     logfile = get_logfile(dom)
-
+    time = datetime.now().strftime("%I:%M %p")
     with open(logfile, "a") as file:
-        file.write(msg + "\n\n")
+        file.write(f"[{time}]\n{msg}\n\n")
 
     print(f"Logged to {helpers.format_date(datetime.now())} in domain '{dom}'.")
 
